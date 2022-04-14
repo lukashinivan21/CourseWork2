@@ -42,6 +42,26 @@ public class JavaQuestionServiceTest {
     }
 
     @Test
+    public void add() {
+        Mockito.when(questionRepositoryMock.add(QUESTION11, ANSWER1)).thenReturn(QUESTION1);
+        Question expected = out.add(QUESTION11, ANSWER1);
+        Assertions.assertEquals(expected, QUESTION1);
+    }
+
+    @Test
+    public void remove() {
+        Mockito.when(questionRepositoryMock.remove(QUESTION12, ANSWER2)).thenReturn(QUESTION2);
+        Question expected = out.remove(QUESTION12, ANSWER2);
+        Assertions.assertEquals(expected, QUESTION2);
+    }
+
+    @Test
+    public void getQuestions() {
+        Collection<Question> expected = out.getQuestions();
+        Assertions.assertEquals(expected, actualQuestions);
+    }
+
+    @Test
     public void getRandomQuestion() {
         Question expected = out.getRandomQuestion();
         Assertions.assertEquals(expected, QUESTION1);
